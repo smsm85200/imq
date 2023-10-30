@@ -14,7 +14,7 @@
 
 ### 🙄 ᴅᴇᴍᴏ/ᴛᴇsᴛ ʙᴏᴛ
   
-  [sᴛʀɪɴɢ ʙᴏᴛ 🍑](https://telegram.me/STRING_SESSION_MAKER_BOT)
+  [sᴛʀɪɴɢ ʙᴏᴛ 🍑](https://telegram.me/@wbvBoT)
 
 ```
 Atleast Give A Star and Fork The Repo 🖤
