@@ -74,7 +74,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         ty += " ʙᴏᴛ"
     await msg.reply(f" 𝚜𝚝𝚊𝚛𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚗𝚐 𝚊 𝚜𝚎𝚜𝚜𝚒𝚘𝚗 **{ty}** ...")
    user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, "𝚂𝚎𝚗𝚍 𝚝𝚑𝚎 API_ID\n\n𝙲𝚕𝚒𝚌𝚔 /skip 𝚘 𝚎𝚡𝚝𝚛𝚊𝚌𝚝 𝚘𝚗 𝚗𝚞𝚖𝚋𝚎𝚛 𝚘𝚗𝚕𝚢", filters=filters.text)
+    api_id_msg = await bot.ask(user_id, "𝚂𝚎𝚗𝚍 𝚝𝚑𝚎 API_ID\n\n𝙲𝚕𝚒𝚌𝚔 /skip 𝚝𝚘 𝚎𝚡𝚝𝚛𝚊𝚌𝚝 𝚘𝚗 𝚗𝚞𝚖𝚋𝚎𝚛 𝚘𝚗𝚕𝚢", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "/skip":
@@ -146,13 +146,13 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             await msg.reply("• 𝚃𝚑𝚎 𝚌𝚘𝚍𝚎 𝚑𝚊𝚜 𝚎𝚡𝚙𝚒𝚛𝚎𝚍n\n• ᴄʟɪᴄᴋ  /start\n\n• 𝙰𝚗𝚍 𝚝𝚛𝚢 𝚊𝚐𝚊𝚒𝚗", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1):
-            await msg.reply(""• 𝚃𝚑𝚎 𝚌𝚘𝚍𝚎 𝚑𝚊𝚜 𝚎𝚡𝚙𝚒𝚛𝚎𝚍n\n• ᴄʟɪᴄᴋ  /start\n\n• 𝙰𝚗𝚍 𝚝𝚛𝚢 𝚊𝚐𝚊𝚒𝚗", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("• 𝚃𝚑𝚎 𝚌𝚘𝚍𝚎 𝚑𝚊𝚜 𝚎𝚡𝚙𝚒𝚛𝚎𝚍n\n• ᴄʟɪᴄᴋ  /start\n\n• 𝙰𝚗𝚍 𝚝𝚛𝚢 𝚊𝚐𝚊𝚒𝚗", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
             try:
-                two_step_msg = await bot.ask(user_id, "**• آبعت الباسورد الخاص بحسابڪ .** ", filters=filters.text, timeout=300)
+                two_step_msg = await bot.ask(user_id, "**• 𝚂𝚎𝚗𝚍 𝚝𝚑𝚎 𝚙𝚊𝚜𝚜𝚠𝚘𝚛𝚍 𝚏𝚘𝚛 𝚢𝚘𝚞𝚛 𝚊𝚌𝚌𝚘𝚞𝚗𝚝 .** ", filters=filters.text, timeout=300)
             except TimeoutError:
-                await msg.reply("• انتهت آلمـدهہ‏‏\n\n• اضغط  /start\n\n• وابدا من جديد", reply_markup=InlineKeyboardMarkup(gen_button))
+                await msg.reply("• 𝚃𝚑𝚎 𝚌𝚘𝚍𝚎 𝚑𝚊𝚜 𝚎𝚡𝚙𝚒𝚛𝚎𝚍n\n• ᴄʟɪᴄᴋ  /start\n\n• 𝙰𝚗𝚍 𝚝𝚛𝚢 𝚊𝚐𝚊𝚒𝚗", reply_markup=InlineKeyboardMarkup(gen_button))
                 return
             try:
                 password = two_step_msg.text
@@ -163,7 +163,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
                 if await cancelled(api_id_msg):
                     return
             except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
-                await two_step_msg.reply("• الباسـورد غير صحيح\\• إضغط  /start  !\n\n• وجرب تآني وآتاكد من الباسورد ", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+                await two_step_msg.reply("• **𝚙𝚊𝚜𝚜𝚠𝚘𝚛𝚍** ɪѕ ғᴀɪʟᴅ. \n\n • ᴄʟɪᴄᴋ  /start ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
                 return
     else:
         if telethon:
@@ -183,20 +183,20 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     except KeyError:
         pass
     await client.disconnect()
-    await bot.send_message(msg.chat.id, " ✅تم استخراج الجلسه بنجاح ️ {} .\n\n🔍من فضلك اذهب الي الرسايل المحفوظه بحسابك!  ! \n\n**ᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @u0uu0  ".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
+    await bot.send_message(msg.chat.id, " 𝚃𝚑𝚎 𝚜𝚎𝚜𝚜𝚒𝚘𝚗 𝚑𝚊𝚜 𝚋𝚎𝚎𝚗 𝚎𝚡𝚝𝚛𝚊𝚌𝚝𝚎𝚍 ️ {} .\n\m \n\n**ᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @u0uu0  ".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
 
 
 async def cancelled(msg):
     if "/cancel" in msg.text:
-        await msg.reply("** تم انهاء آلعمـليـهہ‏‏ **", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("** ᴛʜᴇ ᴏᴘᴇʀᴀᴛɪᴏɴ ʜᴀѕ ʙᴇᴇɴ ᴄᴏᴍᴘʟᴇᴛᴇᴅ **", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
     elif "/restart" in msg.text:
-        await msg.reply("** تمـ آعآد‏‏هہ تشـغيـل آلبوت !**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("** ᵀᴴᴱ ᴮᴼᵀ ᴴᴬˢ ᴮᴱᴱᴺ ᴿᴱˢᵀᴬᴿᵀᴱᴰ **", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
     elif "/skip" in msg.text:
         return False
     elif msg.text.startswith("/"):  # Bot Commands
-        await msg.reply("** تم آنهآء آلعمـليـهہ‏‏ !**", quote=True)
+        await msg.reply("** ᴛʜᴇ ᴏᴘᴇʀᴀᴛɪᴏɴ ʜᴀѕ ʙᴇᴇɴ ᴄᴏᴍᴘʟᴇᴛᴇᴅ **", quote=True)
         return True
     else:
         return False
