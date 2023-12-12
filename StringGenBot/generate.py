@@ -72,9 +72,9 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             ty += " ᴠ2"
     if is_bot:
         ty += " ʙᴏᴛ"
-    await msg.reply(f" ⚡ ¦ بـدء إنـشـاء جـلسـة **{ty}** ...")
-    user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, "✨ حسنـا قم بأرسال الـ API_ID\n\nاضغط /skip عشان تستخرج بالرقم فقط.", filters=filters.text)
+    await msg.reply(f" 𝚜𝚝𝚊𝚛𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚗𝚐 𝚊 𝚜𝚎𝚜𝚜𝚒𝚘𝚗 **{ty}** ...")
+   user_id = msg.chat.id
+    api_id_msg = await bot.ask(user_id, "𝚂𝚎𝚗𝚍 𝚝𝚑𝚎 API_ID\n\n𝙲𝚕𝚒𝚌𝚔 /skip 𝚘 𝚎𝚡𝚝𝚛𝚊𝚌𝚝 𝚘𝚗 𝚗𝚞𝚖𝚋𝚎𝚛 𝚘𝚗𝚕𝚢", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "/skip":
@@ -86,12 +86,12 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         except ValueError:
             await api_id_msg.reply("**ᴀᴩɪ_ɪᴅ** ᴍᴜsᴛ ʙᴇ ᴀɴ ɪɴᴛᴇɢᴇʀ, sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
             return
-        api_hash_msg = await bot.ask(user_id, " ✨ حسنـا قم بأرسال الـ API_HASH", filters=filters.text)
+        api_hash_msg = await bot.ask(user_id, " 𝚂𝚎𝚗𝚍 𝚝𝚑𝚎 API_HASH", filters=filters.text)
         if await cancelled(api_hash_msg):
             return
         api_hash = api_hash_msg.text
     if not is_bot:
-        t = "• الان ارسل رقمك مع رمز دولتك \n\n • مثال : +201287585064"
+        t = "• 𝚂𝚎𝚗𝚍 𝙿𝚑𝚘𝚗𝚎 𝚗𝚞𝚖𝚋𝚎𝚛 \n\n • ex: +96477.."
     else:
         t = "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.\nᴇxᴀᴍᴩʟᴇ : `5432198765:abcdanonymousterabaaplol`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
@@ -99,7 +99,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         return
     phone_number = phone_number_msg.text
     if not is_bot:
-        await msg.reply("** انتظر سـوف نـرسـل كـود لحسابك بالتليجـرام .**")
+        await msg.reply("** ᴡᴀɪᴛ, ᴀ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴄᴏᴅᴇ ᴡɪʟʟ ʙᴇ ѕᴇɴᴛ ᴛᴏ ʏᴏụʀ ᴀᴄᴄᴏụɴᴛ .**")
     else:
         await msg.reply("» ᴛʀʏɪɴɢ ᴛᴏ ʟᴏɢɪɴ ᴠɪᴀ ʙᴏᴛ ᴛᴏᴋᴇɴ...")
     if telethon and is_bot:
@@ -121,19 +121,19 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             else:
                 code = await client.send_code(phone_number)
     except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1):
-        await msg.reply(" عذرا  ! **ᴀᴩɪ_ɪᴅ** و **ᴀᴩɪ_ʜᴀsʜ** بتوع اك محذوف. \n\n • اضغط  /start وابدا من جديد .", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply(" **ᴀᴩɪ_ɪᴅ** ᴏʀ **ᴀᴩɪ_ʜᴀsʜ** ɪѕ ғᴀɪʟᴅ. \n\n • ᴄʟɪᴄᴋ  /start ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ .", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     except (PhoneNumberInvalid, PhoneNumberInvalidError, PhoneNumberInvalid1):
-        await msg.reply("عذرا  ! **الرقم** مش معمول بيه اكونت علي التلي.\n\nاضغط  /start وابدا من جديد . ", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply(" **ᴘʜᴏɴᴇ ɴụᴍʙᴇʀ** ɪѕ ғᴀɪʟᴅ. \n\n • ᴄʟɪᴄᴋ  /start ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ . ", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     try:
         phone_code_msg = None
         if not is_bot:
-            phone_code_msg = await bot.ask(user_id, "[ارسل الكود زي اللي في الصوره](https://telegra.ph/file/da1af082c6b754959ab47.jpg) » 🔍من فضلك افحص حسابك بالتليجرام وتفقد الكود من حساب اشعارات التليجرام. إذا كان\n  هناك تحقق بخطوتين( المرور ) ، أرسل كلمة المرور هنا بعد ارسال كود الدخول بالتنسيق أدناه.- اذا كانت كلمة المرور او الكود  هي\n 12345 يرجى ارسالها بالشكل التالي 1 2 3 4 5 مع وجود مسـافـات بين الارقام اذا احتجت مساعدة @u0uu0.", filters=filters.text, timeout=600)
+            phone_code_msg = await bot.ask(user_id, "[Send the code like the one in the picture](https://telegra.ph/file/da1af082c6b754959ab47.jpg) » 𝙸𝚏 𝚝𝚑𝚎𝚛𝚎 𝚒𝚜 𝚊 𝚙𝚛𝚘𝚋𝚕𝚎𝚖, 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 @𝚞0𝚞𝚞0", filters=filters.text, timeout=600)
             if await cancelled(phone_code_msg):
                 return
     except TimeoutError:
-        await msg.reply("• انتهت آلمـدهہ‏‏\n\n• اضغط  /start\n\n• وابدا من جديد", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("• 𝚃𝚑𝚎 𝚌𝚘𝚍𝚎 𝚑𝚊𝚜 𝚎𝚡𝚙𝚒𝚛𝚎𝚍n\n• ᴄʟɪᴄᴋ  /start\n\n• 𝙰𝚗𝚍 𝚝𝚛𝚢 𝚊𝚐𝚊𝚒𝚗", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     if not is_bot:
         phone_code = phone_code_msg.text.replace(" ", "")
@@ -143,10 +143,10 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             else:
                 await client.sign_in(phone_number, code.phone_code_hash, phone_code)
         except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1):
-            await msg.reply("• انتهت آلمـدهہ‏‏\n\n• اضغط  /start\n\n• وابدا من جديد", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("• 𝚃𝚑𝚎 𝚌𝚘𝚍𝚎 𝚑𝚊𝚜 𝚎𝚡𝚙𝚒𝚛𝚎𝚍n\n• ᴄʟɪᴄᴋ  /start\n\n• 𝙰𝚗𝚍 𝚝𝚛𝚢 𝚊𝚐𝚊𝚒𝚗", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1):
-            await msg.reply("• انتهت آلمـدهہ‏‏\n\n• اضغط  /start\n\n• وابدا من جديد", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply(""• 𝚃𝚑𝚎 𝚌𝚘𝚍𝚎 𝚑𝚊𝚜 𝚎𝚡𝚙𝚒𝚛𝚎𝚍n\n• ᴄʟɪᴄᴋ  /start\n\n• 𝙰𝚗𝚍 𝚝𝚛𝚢 𝚊𝚐𝚊𝚒𝚗", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
             try:
