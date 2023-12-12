@@ -73,7 +73,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     if is_bot:
         ty += " ʙᴏᴛ"
     await msg.reply(f" 𝚜𝚝𝚊𝚛𝚝 𝚌𝚛𝚎𝚊𝚝𝚒𝚗𝚐 𝚊 𝚜𝚎𝚜𝚜𝚒𝚘𝚗 **{ty}** ...")
-   user_id = msg.chat.id
+    user_id = msg.chat.id
     api_id_msg = await bot.ask(user_id, "𝚂𝚎𝚗𝚍 𝚝𝚑𝚎 API_ID\n\n𝙲𝚕𝚒𝚌𝚔 /skip 𝚝𝚘 𝚎𝚡𝚝𝚛𝚊𝚌𝚝 𝚘𝚗 𝚗𝚞𝚖𝚋𝚎𝚛 𝚘𝚗𝚕𝚢", filters=filters.text)
     if await cancelled(api_id_msg):
         return
